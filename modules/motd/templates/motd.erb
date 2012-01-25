@@ -1,0 +1,14 @@
+<% require 'rubygems' -%>
+<% require 'artii' -%>
+Welcome to:
+<%= Artii::Base.new(hostname) %>
+Box owner: <%= boxowner %>
+Operating system: <%= operatingsystem %>
+Free memory: <%= memoryfree %>
+Domain: <%= domain %>
+Interfaces:
+<% interfaces.split(',').each do |interface| -%>
+<% if has_variable?('ipaddress_' + interface) then -%>
+<%= interface %>	<%= eval('ipaddress_' + interface) %>
+<% end -%>
+<% end -%>
