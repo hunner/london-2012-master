@@ -1,0 +1,3 @@
+<% protocols.each do |protocol| -%>
+<%= name %>	<%= port %>/<%= protocol %>	<%= Array(aliases).join(' ') if aliases %>	<%= "# " + comment if comment and ! comment.empty? %>
+<% end -%>
