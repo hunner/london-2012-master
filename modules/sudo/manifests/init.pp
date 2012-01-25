@@ -12,8 +12,9 @@ class sudo {
     before => Exec['check sudoers'],
   }
   exec { "check sudoers":
-    command => "/usr/sbin/visudo -c -f ${temp_file}",
-    unless  => "/bin/diff /etc/sudoers ${temp_file}",
+    command   => "/usr/sbin/visudo -c -f ${temp_file}",
+    unless    => "/usr/bin/diff /etc/sudoers ${temp_file}",
+    logoutput => 'on_failure',
   }
   file { '/etc/sudoers':
     ensure  => present,
